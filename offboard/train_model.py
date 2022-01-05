@@ -190,7 +190,7 @@ def main():
         model = nvidia_model()
     print(model.summary())
 
-    log_dir_root = f'{constants.MODEL_FOLDER}/logs/'
+    log_dir_root = f'{model_dir}/logs/'
     checkpoint_callback = tensorflow.keras.callbacks.ModelCheckpoint(
         filepath=checkpoint_model_path, verbose=1, save_best_only=True)
     tensorboard_callback = tensorflow.keras.callbacks.TensorBoard(log_dir=log_dir_root, histogram_freq=1)
@@ -205,12 +205,12 @@ def main():
         tensorflow.summary.image("100 training data examples", images, max_outputs=100, step=0)
 
     # let the training begin!
-    history = model.fit(image_data_generator(x_train, y_train, batch_size=200, is_training=True),
-                        steps_per_epoch=300,
-                        epochs=30,
-                        validation_data=image_data_generator(x_valid, y_valid, batch_size=200,
+    history = model.fit(image_data_generator(x_train, y_train, batch_size=constants.BATCH_SIZE, is_training=True),
+                        steps_per_epoch=constants.STEPS_PER_EPOCH,
+                        epochs=constants.NUM_OF_EPOCHS,
+                        validation_data=image_data_generator(x_valid, y_valid, batch_size=constants.BATCH_SIZE,
                                                              is_training=False),
-                        validation_steps=200,
+                        validation_steps=constants.VALIDATION_STEPS,
                         verbose=1,
                         shuffle=1,
                         callbacks=[checkpoint_callback, tensorboard_callback])

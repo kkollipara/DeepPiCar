@@ -32,7 +32,7 @@ clock = pygame.time.Clock()
 pygame.joystick.init()
 joystick_count = pygame.joystick.get_count()
 
-while (joystick_count < 1):
+while joystick_count < 1:
     logging.info('Waiting for controller')
     time.sleep(5)
 
@@ -44,7 +44,7 @@ camera = cv2.VideoCapture(0)
 camera.set(3, constants.SCREEN_WIDTH)
 camera.set(4, constants.SCREEN_HEIGHT)
 
-# Picar setup
+# picar setup
 picar.setup()
 db_file = constants.DB_FILE
 fw = front_wheels.Front_Wheels(debug=False, db=db_file)
@@ -55,7 +55,7 @@ bw.ready()
 fw.ready()
 cam.ready()
 
-#Data folder setup
+# Data folder setup
 collect_data = False
 run_folder = os.path.join(constants.ROOT_FOLDER,
                           constants.DATA_FOLDER + datetime.datetime.now().strftime("%y%m%d_%H%M%S"))
