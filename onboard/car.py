@@ -7,10 +7,10 @@ def drive(fw, bw, steering_angle, speed):
 
     fw.turn(steering_angle)
 
-    if(speed > 0):
+    if speed > 0:
         bw.speed = speed
         bw.forward()
-    elif(speed < 0):
+    elif speed < 0:
         bw.speed = -speed
         bw.backward()
     else:

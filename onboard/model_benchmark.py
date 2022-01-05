@@ -6,16 +6,15 @@ import cv2
 import numpy as np
 import tflite_runtime.interpreter as tflite
 
-import constant
-from image_processing import my_imread
-from image_processing import preprocess_image
-from train_model import load_data
+from offboard.train_model import load_data
+from util import constants
+from util.image_processing import my_imread
+from util.image_processing import preprocess_image
 
 TEST_SIZE = 2000
 
-cwd = os.getcwd()
-lite_model_path = os.path.join(cwd, constant.MODEL_FOLDER, constant.LITE_MODEL_NAME)
-image_paths = load_data(os.path.join(cwd, constant.DATA_FOLDER))
+lite_model_path = os.path.join(constants.ROOT_FOLDER, constants.MODEL_FOLDER, constants.LITE_MODEL_NAME)
+image_paths = load_data(os.path.join(constants.ROOT_FOLDER, constants.DATA_FOLDER))
 interpreter = tflite.Interpreter(model_path=lite_model_path)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()

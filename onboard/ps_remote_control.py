@@ -1,6 +1,11 @@
-import pygame
+"""
+Use play station controller as remote for picar
+
+"""
+import time
 
 import picar
+import pygame
 from picar import back_wheels, front_wheels
 
 pygame.init()
@@ -12,9 +17,9 @@ clock = pygame.time.Clock()
 pygame.joystick.init()
 joystick_count = pygame.joystick.get_count()
 
-while(joystick_count<1):
-    sleep(100)
-    
+while (joystick_count < 1):
+    logging.info('Waiting for controller')
+    time.sleep(5)
 
 print("Joystick count: {}".format(joystick_count))
 joystick = pygame.joystick.Joystick(0)

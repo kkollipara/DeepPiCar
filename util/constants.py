@@ -1,8 +1,11 @@
+import os
+from pathlib import Path
 
 # paths
-DB_FILE = "/home/pi/SunFounder_PiCar-V/remote_control/remote_control/driver/config"
+ROOT_FOLDER = Path(os.getcwd()).parent
 DATA_FOLDER = 'data/images'
 MODEL_FOLDER = 'data/model'
+DB_FILE = "/home/pi/SunFounder_PiCar-V/remote_control/remote_control/driver/config"  # edit this to your calib file
 
 # file names
 MODEL_CHECKPOINT_NAME = 'lane_navigation_check.h5'

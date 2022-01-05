@@ -30,13 +30,13 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from PIL import Image
 
-import constant
-from image_processing import pan
-from image_processing import zoom
-from image_processing import blur
-from image_processing import adjust_brightness
-from image_processing import my_imread
-from image_processing import preprocess_image
+from util import constants
+from util.image_processing import pan
+from util.image_processing import zoom
+from util.image_processing import blur
+from util.image_processing import adjust_brightness
+from util.image_processing import my_imread
+from util.image_processing import preprocess_image
 
 
 def get_angle_from_filename(filename):
@@ -72,7 +72,7 @@ def nvidia_model():
     model.add(Dense(50, activation='elu'))
     model.add(Dense(10, activation='elu'))
     model.add(Dense(1))
-    optimizer = Adam(learning_rate=constant.LEARNING_RATE)
+    optimizer = Adam(learning_rate=constants.LEARNING_RATE)
     # model = tfmot.quantization.keras.quantize_model(model) todo: figure out quantization
     model.compile(loss='mse', optimizer=optimizer)
     return model
@@ -169,11 +169,10 @@ def test_data(image_paths, steering_angles, x_train, x_valid, y_train, y_valid):
 
 
 def main():
-    cwd = os.getcwd()
-    data_dir = os.path.join(cwd, constant.DATA_FOLDER)
-    model_dir = os.path.join(cwd, constant.MODEL_FOLDER)
-    final_model_path = join(model_dir, constant.MODEL_FINAL_NAME)
-    checkpoint_model_path = join(model_dir, constant.MODEL_CHECKPOINT_NAME)
+    data_dir = os.path.join(constants.ROOT_FOLDER, constants.DATA_FOLDER)
+    model_dir = os.path.join(constants.ROOT_FOLDER, constants.MODEL_FOLDER)
+    final_model_path = join(model_dir, constants.MODEL_FINAL_NAME)
+    checkpoint_model_path = join(model_dir, constants.MODEL_CHECKPOINT_NAME)
     image_paths, steering_angles = load_data(data_dir)
 
     x_train, x_valid, y_train, y_valid = train_test_split(image_paths, steering_angles, test_size=0.2)
@@ -191,7 +190,7 @@ def main():
         model = nvidia_model()
     print(model.summary())
 
-    log_dir_root = f'{constant.MODEL_FOLDER}/logs/'
+    log_dir_root = f'{constants.MODEL_FOLDER}/logs/'
     checkpoint_callback = tensorflow.keras.callbacks.ModelCheckpoint(
         filepath=checkpoint_model_path, verbose=1, save_best_only=True)
     tensorboard_callback = tensorflow.keras.callbacks.TensorBoard(log_dir=log_dir_root, histogram_freq=1)

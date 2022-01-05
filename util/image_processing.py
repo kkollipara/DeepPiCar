@@ -3,8 +3,6 @@ import random
 import cv2
 from imgaug import augmenters as img_aug
 
-import constant
-
 
 def my_imread(image_path):
     image = cv2.imread(image_path)
