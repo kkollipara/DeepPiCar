@@ -3,7 +3,7 @@ Use play station controller as remote for picar
 
 """
 import time
-
+import logging
 import picar
 import pygame
 from picar import back_wheels, front_wheels
@@ -11,7 +11,7 @@ from picar import back_wheels, front_wheels
 pygame.init()
 
 clock = pygame.time.Clock()
-
+logging.basicConfig(level=logging.INFO)
 
 # Joystick Setup
 pygame.joystick.init()
