@@ -1,4 +1,4 @@
-# DeepPiCar
+# Lane Navigation
 
 Lane Navigation through deep learning
 
