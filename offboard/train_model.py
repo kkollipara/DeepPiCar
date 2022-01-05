@@ -1,3 +1,6 @@
+"""
+preprocess images nad train lane navigation model
+"""
 import fnmatch
 import os
 import pickle
