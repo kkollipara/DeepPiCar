@@ -20,6 +20,7 @@ joystick_count = pygame.joystick.get_count()
 while (joystick_count < 1):
     logging.info('Waiting for controller')
     time.sleep(5)
+    joystick_count = pygame.joystick.get_count()
 
 print("Joystick count: {}".format(joystick_count))
 joystick = pygame.joystick.Joystick(0)

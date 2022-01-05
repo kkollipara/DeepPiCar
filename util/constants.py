@@ -15,7 +15,7 @@ LITE_MODEL_NAME = 'lane_navigation_lite.tflite'
 # image processing params
 SCREEN_WIDTH = 320
 SCREEN_HEIGHT = 240
-SHOW_IMAGE = True
+SHOW_IMAGE = False
 CROP_DENOM = 8  # factor for cropping top of image; 2 => removes top half; update this based on camera lens and pos
 
 # car params
