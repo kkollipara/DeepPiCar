@@ -1,3 +1,6 @@
+"""
+Program to benchmark model inference FPS
+"""
 import os
 import random
 from datetime import datetime

@@ -1,3 +1,7 @@
+"""
+Program to verify model performance
+"""
+
 import os
 import pickle
 
