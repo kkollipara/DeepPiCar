@@ -2,10 +2,8 @@
 Use play station controller as remote for picar
 
 """
-import logging
 import time
-
-import cv2
+import logging
 import picar
 import pygame
 from picar import back_wheels, front_wheels
@@ -53,20 +51,15 @@ while True:
  
     fw.turn(axis_lateral)
 
-    if (axis_vertical > 0):
+    if(axis_vertical > 0):
         bw.speed = axis_vertical
         bw.forward()
-    elif (axis_vertical < 0):
+    elif(axis_vertical < 0):
         bw.speed = -axis_vertical
         bw.backward()
     else:
         bw.speed = 0
         bw.stop()
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        bw.speed = 0
-        bw.stop()
-        break
 
     clock.tick(40)
 
