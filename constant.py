@@ -13,7 +13,7 @@ LITE_MODEL_NAME = 'lane_navigation_lite.tflite'
 SCREEN_WIDTH = 320
 SCREEN_HEIGHT = 240
 SHOW_IMAGE = True
-CROP_DENOM = 2  # factor for cropping top of image; 2 => removes top half
+CROP_DENOM = 8  # factor for cropping top of image; 2 => removes top half
 
 # car params
 DEFAULT_SPEED = 50
