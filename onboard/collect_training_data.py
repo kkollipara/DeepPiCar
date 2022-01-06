@@ -59,7 +59,7 @@ cam.ready()
 # Data folder setup
 collect_data = False
 run_folder = os.path.join(constants.ROOT_FOLDER,
-                          constants.DATA_FOLDER + datetime.datetime.now().strftime("%y%m%d_%H%M%S"))
+                          constants.DATA_FOLDER, datetime.datetime.now().strftime("%y%m%d_%H%M%S"))
 
 if not os.path.exists(run_folder):
     os.makedirs(run_folder)
